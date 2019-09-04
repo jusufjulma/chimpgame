@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+}
+
+.gameboard {
+  background-color: #222;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  height: 800px;
+  margin: auto;
+  width: 1200px;
+
+  .cell {
+    align-self: center;
+    background-color: #ccc;
+    display: grid;
+    justify-self: center;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 100px;
+    line-height: 100px;
+
+    &.active {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  height: 100px;
+  margin-top: 50px;
+  width: 1000px;
+  outline: solid #000;
+
+  &-grid_size {
+    width: 25%;
+  }
+  &-numbers_length {
+    width: 25%;
+  }
+  &-timing {
+    width: 25%;
+  }
+}

@@ -6,7 +6,7 @@ export class Cell extends React.Component{
         let active = this.props.active;
         return (
             <div className={`cell ${active}`}>
-                {active}
+                {this.props.number}
             </div>
         )
     }
