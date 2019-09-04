@@ -5,9 +5,12 @@ export class Options extends React.Component{
 
         return (
             <div className='options'>
-                <div className='options-grid_size'>Box1</div>
-                <div className='options-numbers_length'>Box2</div>
-                <div className='options-timing'>Box3</div>
+                <div className='instructions'>
+                    <p>You can see the instructions and ruleset from here</p>
+                </div>
+                <div className='difficulty'>
+                    <p>Switch difficulty level here</p>
+                </div>
             </div>
         )
     }

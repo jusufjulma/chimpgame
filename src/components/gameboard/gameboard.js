@@ -6,7 +6,7 @@ export class Gameboard extends React.Component{
 
         let items = [];
         let j = 1;
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 40; i++) {
             if (i % 4 === 0) {
                 items.push(<Cell active={'active'} number={j}/>)
                 j++;
