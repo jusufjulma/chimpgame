@@ -2,11 +2,19 @@ import React from 'react';
 import { Cell } from '../cell/cell.js';
 
 export class Gameboard extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      clickThis: '',
+    }
+  } // end of constructor
+
   render() {
 
     let random = (factor) => Math.floor(Math.random() * factor)
 
-    let numberCount = 9;
+    let numberCount = 3;
     let selectedCells = [];
     let numberValues = [];
     let rightOrder = [];
@@ -62,10 +70,17 @@ export class Gameboard extends React.Component {
       }
     }
 
+    let clickFirst = () => {
+      this.setState({clickThis: rightOrder[0][0]})
+    }
+
 
     return (
+      <div>
       <div className='gameboard'>
         {items}
+      </div>
+        <h1 onClick={clickFirst}>Which should I click first? {this.state.clickThis}</h1>
       </div>
     )
   }
