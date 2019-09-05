@@ -6,7 +6,7 @@ export class Gameboard extends React.Component {
 
     let random = (factor) => Math.floor(Math.random() * factor)
 
-    let numberCount = 3;
+    let numberCount = 9;
     let selectedCells = [];
     let numberValues = [];
     let rightOrder = [];
@@ -50,13 +50,15 @@ export class Gameboard extends React.Component {
       let j = 0;
       console.log(rightOrder[j][0], 'asdasd')
       for (let i = 0; i < 40; i++) {
+        let jump = 0;
         for (let j = 0; j < rightOrder.length; j++) {
           if (rightOrder[j][0] === i) {
             items.push(<Cell id={rightOrder[j][0]} value={rightOrder[j][1]} />)
-            i++ 
+            jump++
           }
         }
-        items.push(<Cell id={i} value={20} />)
+        if (jump === 0) items.push(<Cell id={i} value={20} />)
+        jump = 0;
       }
     }
 
