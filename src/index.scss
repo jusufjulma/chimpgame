@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background-color: #000;
 }
 
 .gameboard {
@@ -13,7 +14,7 @@ body {
 
   .cell {
     align-self: center;
-    background-color: #ccc;
+    background-color: #eee;
     display: grid;
     justify-self: center;
     width: 100px;

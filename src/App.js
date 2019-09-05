@@ -1,6 +1,6 @@
 import React from 'react';
-import {Gameboard} from './components/gameboard/gameboard.js';
-import {Options} from './components/options/options.js';
+import { Gameboard } from './components/gameboard/gameboard.js';
+import { Options } from './components/options/options.js';
 
 function App() {
   return (
