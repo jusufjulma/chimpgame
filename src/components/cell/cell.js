@@ -14,7 +14,7 @@ export class Cell extends React.Component {
 
     // let active = this.props.active;
     let display = this.state.number
-    if (display === 0) display = ''
+    if (display === 20) display = ''
     return (
       // <div className={`cell ${active}`}>
       <div className='cell' id={`cell${this.state.id}`}>

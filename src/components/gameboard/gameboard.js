@@ -9,6 +9,7 @@ export class Gameboard extends React.Component {
     let numberCount = 3;
     let selectedCells = [];
     let numberValues = [];
+    let rightOrder = [];
 
     function numberPlacement(numberCount) {
       for (let i = 0; i < numberCount; i++) {
@@ -32,7 +33,18 @@ export class Gameboard extends React.Component {
     }
     numberPlacement(numberCount);
     numberSelector(numberCount);
-    console.log(selectedCells, numberValues)
+    console.log(selectedCells +'\n'+ numberValues)
+    numbersToCell();
+
+    function numbersToCell() {
+      let rightOrder = [];
+      numberValues = numberValues.sort();
+      for (let i = 0; i < selectedCells.length; i++) {
+        rightOrder.push([selectedCells[i], numberValues[i]])
+      }
+      console.log(rightOrder)
+    }
+
 
     let items = [];
     let j = 0;
@@ -41,7 +53,7 @@ export class Gameboard extends React.Component {
         items.push(<Cell id={i} value={numberValues[j]} />)
         j++;
       } else {
-        items.push(<Cell id={i} value={0} />)
+        items.push(<Cell id={i} value={20} />)
       }
     }
 
