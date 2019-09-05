@@ -37,7 +37,6 @@ export class Gameboard extends React.Component {
     numbersToCell();
 
     function numbersToCell() {
-      let rightOrder = [];
       numberValues = numberValues.sort();
       for (let i = 0; i < selectedCells.length; i++) {
         rightOrder.push([selectedCells[i], numberValues[i]])
@@ -45,14 +44,18 @@ export class Gameboard extends React.Component {
       console.log(rightOrder)
     }
 
-
     let items = [];
-    let j = 0;
-    for (let i = 0; i < 40; i++) {
-      if (selectedCells.indexOf(i) !== -1) {
-        items.push(<Cell id={i} value={numberValues[j]} />)
-        j++;
-      } else {
+    itemArrayCreator();
+    function itemArrayCreator() {
+      let j = 0;
+      console.log(rightOrder[j][0], 'asdasd')
+      for (let i = 0; i < 40; i++) {
+        for (let j = 0; j < rightOrder.length; j++) {
+          if (rightOrder[j][0] === i) {
+            items.push(<Cell id={rightOrder[j][0]} value={rightOrder[j][1]} />)
+            i++ 
+          }
+        }
         items.push(<Cell id={i} value={20} />)
       }
     }
