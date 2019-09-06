@@ -6,57 +6,64 @@ export class Gameboard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      clickThis: '',
+      numberCount: 9,
+      selectedCells: [],
+      numberValues: [],
+      rightOrder: [],
+      items: [],
     }
   } // end of constructor
+  
+  init = () => {
+    this.numberPlacement(this.state.numberCount);
+    this.numberSelector(this.state.numberCount);
+    this.numbersToCell();
+    this.itemArrayCreator();
+  }
+    random = (factor) => Math.floor(Math.random() * factor);
 
-  render() {
-
-    let random = (factor) => Math.floor(Math.random() * factor)
-
-    let numberCount = 3;
-    let selectedCells = [];
-    let numberValues = [];
-    let rightOrder = [];
-
-    function numberPlacement(numberCount) {
+    numberPlacement(numberCount) {
+      console.log("selecting numbers")
+      let selectedCells = this.state.selectedCells;
       for (let i = 0; i < numberCount; i++) {
-        let pushMe = random(40)
+        let pushMe = this.random(40)
         if (selectedCells.indexOf(pushMe) === -1) {
           selectedCells.push(pushMe)
         } else {
           i--;
         }
       }
+      this.setState({selectedCells: selectedCells})
     }
-    function numberSelector(numberCount) {
+    numberSelector(numberCount) {
+      let numberValues = [];
       for (let i = 0; i < numberCount; i++) {
-        let pushMe = random(9) + 1
+        let pushMe = this.random(9) + 1
         if (numberValues.indexOf(pushMe) === -1) {
           numberValues.push(pushMe)
         } else {
           i--;
         }
       }
+      console.log(numberValues, "ASDAKDKJ:ASDJKASJKD")
+      this.setState({numberValues: numberValues})
     }
-    numberPlacement(numberCount);
-    numberSelector(numberCount);
-    console.log(selectedCells +'\n'+ numberValues)
-    numbersToCell();
 
-    function numbersToCell() {
-      numberValues = numberValues.sort();
-      for (let i = 0; i < selectedCells.length; i++) {
-        rightOrder.push([selectedCells[i], numberValues[i]])
+    numbersToCell() {
+      let rightOrder = [];
+      let numberValues = this.state.numberValues.sort();
+      for (let i = 0; i < this.state.selectedCells.length; i++) {
+        rightOrder.push([this.state.selectedCells[i], numberValues[i]])
       }
       console.log(rightOrder)
+      this.setState({rightOrder: rightOrder})
+      console.log(this.state.numberValues, "ASDAKDKJ:ASDJKASJKD2222222")
     }
 
-    let items = [];
-    itemArrayCreator();
-    function itemArrayCreator() {
+    itemArrayCreator() {
+      let items = [];
       let j = 0;
-      console.log(rightOrder[j][0], 'asdasd')
+      let rightOrder = this.state.rightOrder;
       for (let i = 0; i < 40; i++) {
         let jump = 0;
         for (let j = 0; j < rightOrder.length; j++) {
@@ -65,22 +72,20 @@ export class Gameboard extends React.Component {
             jump++
           }
         }
-        if (jump === 0) items.push(<Cell id={i} value={20} />)
+        if (jump === 0) items.push(<Cell key={i} id={i} value={20} />)
         jump = 0;
       }
+      this.setState({items: items})
     }
 
-    let clickFirst = () => {
-      this.setState({clickThis: rightOrder[0][0]})
-    }
-
-
+  render() {
+    // this.init();
     return (
       <div>
       <div className='gameboard'>
-        {items}
+        {this.state.items}
       </div>
-        <h1 onClick={clickFirst}>Which should I click first? {this.state.clickThis}</h1>
+      <h1 onClick={this.init}>PASKA:DD</h1>
       </div>
     )
   }
